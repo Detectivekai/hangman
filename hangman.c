@@ -67,5 +67,35 @@ int is_word_guessed(const char secret[], const char letters_guessed[]) {
     }
  }
 
-//guessed_word[0] = '_';
-//guessed_word[1] = secret[0];
+ void get_available_letters(const char letters_guessed[], char available_letters[]) {
+
+    char alph[28] = "abcdefghijklmnopqrstuvwxyz";
+    int alph_len = strlen(alph);
+    int letters_len = strlen(letters_guessed);
+
+    for (int i = 0; i < alph_len; i++) {
+        available_letters[i] = alph[i];
+        for (int j = 0; j < letters_len; j++) {
+            if (letters_guessed[j] == alph[i]) {
+                available_letters[i] = '_';
+                break;
+            }
+        }
+    }
+
+    available_letters[alph_len] = '\0';
+
+    int done = 0; // Наш флаг
+    while (!done) {
+        done = 1;
+        for (int i = 0; i < strlen(available_letters)-1; i++) {
+        if (available_letters[i] == '_') {
+            //available_letters[i] = available_letters[i + 1];
+            for (int j = i; j < strlen(available_letters); j++) {
+                available_letters[j] = available_letters[j + 1];
+            }
+            done = 0;
+            }
+        }
+     }
+ }
