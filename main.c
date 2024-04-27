@@ -10,20 +10,7 @@ int main() {
     get_word(secret);
     printf("%s\n", secret);
 
-    printf("%d\n", is_word_guessed("secret", "aeiou"));
-    // prints: 0
-    printf("%d\n", is_word_guessed("hello", "aeihoul"));
-    // prints: 1
-
-    char result[30];
-    get_guessed_word("container", "arpstxgoieyu", result);
-    printf("%s\n", result);
-    // result = "_o_tai_er"
-
-    char result1[30];
-    get_available_letters("arpstxgoieyu", result1);
-    printf("%s\n", result1);
-    // result = "bcdfhjklmnqvwz"
+    hangman(secret);
 
 
 
